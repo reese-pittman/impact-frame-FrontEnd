@@ -1,13 +1,10 @@
 import { createRoot } from "react-dom/client";
-import Anime from "./Anime";
+import Landing from "./Landing";
 
 const App = () => {
   return (
     <div>
-      <h1>Impact Frame - Watch Now </h1>
-      <Anime name="One Peice" description="A rubber boy pirate fiting peop"/>
-      <Anime name="Bleach" description="Soul reaper high schooler fights people"/>
-      <Anime name="Naruto" description="Little boy gets powerful fox"/>
+      <Landing />
     </div>
   )  
 };
