@@ -1,0 +1,45 @@
+ .nav-bar {
+
+    background-color: tan;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 5rem;
+ }
+
+ .nav-bar input {
+
+   padding: 2em;
+   margin: 1em;
+   width: 25em;
+
+   border-radius: 20rem;
+   border-style:hidden;
+   box-shadow: .2em .2em 5px;
+ }
+
+
+
+ .nav-button {
+
+   margin: .5rem;
+   
+   width: 5em;
+
+   border-radius: 20px;
+   border-style: inset;
+   border-color: blue;
+ }
+
+ .nav-button img {
+   max-width: 100%; /* Ensure the image scales to fit */
+   max-height: 100%; /* Maintain the aspect ratio */
+   object-fit: contain; /* Ensure the image is fully visible */
+ }
+
+ .title {
+
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-weight: 300;
+   font-size: xx-large;
+ }

@@ -1,53 +1,64 @@
 import { useState, useEffect } from "react";
 
-const carsel = () => {
- const [shows, setShows] = useState([]);
- cosnt [imgIndex, setIndex] = useState(1);
 
-    const showList = ["../tempImages/tempImg1", "../tempImages/tempImg2", 
-        "../tempImages/tempImg3", "../tempImages/tempImg4", 
-        "../tempImages/tempImg5", "../tempImages/tempImg6",
-        "../tempImages/tempImg7"
+
+const Carsel = () => {
+ const [shows, setShows] = useState([]);
+ const [imgIndex, setIndex] = useState(1);
+
+    const showList = ["tempImages/tempImg1.jpg", "tempImages/tempImg2.jpg", 
+        "tempImages/tempImg3.jpg", "tempImages/tempImg4.jpg", 
+        "tempImages/tempImg5.jpg", "tempImages/tempImg6.jpg",
+        "tempImages/tempImg7.jpg"
     ]
 
     //I do not have an api for this and I may not
     const fetchShows = async () => {
-        const tempShowList = await fetch(api);
-        const showList = await tempShowList.json();
+        const tempshows = await fetch(api);
+        const listshows = await tempshows.json();
 
-        setShows(showList);
-    }    
+        setShows(lsitshows);
+    }
 
-    function changeDisplay(dirrection){
+
+
+    useEffect(() => {
+        setShows(showList); ``
+    },[]);
+
+    
+    function changeDisplay(direction){
 
         let leftImg = document.getElementById("left-display");
         let currentImg = document.getElementById("current-display");
         let rihgtImg = document.getElementById("right-display");
 
-        setIndex(index + (direction));
+        setIndex(imgIndex + (direction));
 
-        if (imgIndex > showList.length) {
+        //console.log(shows[imgIndex + 1]);
+
+        if (imgIndex > shows.length) {
             setIndex(0)
-            leftImg.src = showList[-1];
-            currentImg.src = showList[imgIndex];
-            rihgtImg.src = showList[imgIndex + 1];
-        } else if (imgIndex + 1 > showList.length) {
-            leftImg.src = showList[imgIndex -1];
-            currentImg.src = showList[imgIndex];
-            rihgtImg.src = showList[0];
+            leftImg.src = shows[-1];
+            currentImg.src = shows[imgIndex];
+            rihgtImg.src = shows[imgIndex + 1];
+        } else if (imgIndex + 1 > shows.length) {
+            leftImg.src = shows[imgIndex -1];
+            currentImg.src = shows[imgIndex];
+            rihgtImg.src = shows[0];
         } else if(imgIndex < 0) {
-            setIndex(showList.length - 1)
-            leftImg.src = showList[imgIndex - 1];
-            currentImg.src = showList[imgIndex];
-            rihgtImg.src = showList[0];
+            setIndex(shows.length - 1)
+            leftImg.src = shows[imgIndex - 1];
+            currentImg.src = shows[imgIndex];
+            rihgtImg.src = shows[0];
         } else if (imgIndex - 1 < 0) {
-            leftImg.src = showList[-1];
-            currentImg.src = showList[imgIndex];
-            rihgtImg.src = showList[imgIndex+ 1];
+            leftImg.src = shows[-1];
+            currentImg.src = shows[imgIndex];
+            rihgtImg.src = shows[imgIndex+ 1];
         } else {
-            leftImg.src = showList[index - (direction)];
-            currentImg.src = showList[imgIndex];
-            rihgtImg.src = showList[index + (direction)];
+            leftImg.src = shows[imgIndex - (direction)];
+            currentImg.src = shows[imgIndex];
+            rihgtImg.src = shows[imgIndex + (direction)];
         }
 
     }
@@ -56,11 +67,11 @@ const carsel = () => {
         <div>
             <h2>Keep Watching:</h2>
             <div>
-                <Button ><img src="../Icons/rightArrowIcon.png" alt="leftIcon" /></Button>
+                <button onClick={()=>changeDisplay(-1)} ><img src="../Icons/rightArrowIcon.png" alt="leftIcon" /></button>
                 <img id="left-display" src="" alt="Show" />
-                <img id="middle-display" src="" alt="Show" />
+                <img id="current-display" src="" alt="Show" />
                 <img id="right-display" src="" alt="Show" />
-                <button><img src="../Icons/rightArrowIcon.png" alt="RightIcon" /></button>
+                <button onClick={()=>changeDisplay(1)}><img src="../Icons/rightArrowIcon.png" alt="RightIcon" /></button>
             </div>
 
         </div>
@@ -69,3 +80,5 @@ const carsel = () => {
         
 
 }
+
+export default Carsel

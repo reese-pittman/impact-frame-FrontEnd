@@ -1,5 +1,8 @@
 import { createRoot } from "react-dom/client";
 import Landing from "./Landing";
+import './App.css';
+
+
 
 const App = () => {
   return (
